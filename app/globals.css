@@ -2,7 +2,15 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #3c3c3c;
+
+  /* Duolingo brand accent colors */
+  --color-green: #58cc02;
+  --color-green-dark: #58a700;
+  --color-yellow: #ffc800;
+  --color-red: #ff4b4b;
+  --color-blue: #1cb0f6;
+  --color-purple: #ce82ff;
 }
 
 @theme inline {
@@ -10,17 +18,25 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Expose accents to Tailwind */
+  --color-duo-green: var(--color-green);
+  --color-duo-green-dark: var(--color-green-dark);
+  --color-duo-yellow: var(--color-yellow);
+  --color-duo-red: var(--color-red);
+  --color-duo-blue: var(--color-blue);
+  --color-duo-purple: var(--color-purple);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #131f24;
+    --foreground: #ffffff;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-nunito);
 }
