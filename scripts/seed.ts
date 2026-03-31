@@ -18,7 +18,7 @@ const main = async () => {
   try {
     console.log("Seeding database");
 
-    // Delete all existing data
+    // Delete all existing. data
     await Promise.all([
       db.delete(schema.userProgress),
       db.delete(schema.questionProgress),
