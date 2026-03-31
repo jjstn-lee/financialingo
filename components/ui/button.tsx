@@ -11,35 +11,42 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-white text-black border-slate-200 border-2 border-b-4 active:border-b-2 hover:bg-slate-100 text-slate-500",
+          "bg-background text-foreground border-foreground/20 border-2 border-b-4 active:border-b-2 hover:bg-foreground/5",
 
         // custom
         locked:
-          "bg-neutral-200 text-primary-foreground hover:bg-neutral-200/90 border-neutral-400 border-b-4 active:border-b-0",
+          "bg-foreground/10 text-foreground hover:bg-foreground/20 border-foreground/25 border-b-4 active:border-b-0",
 
         primary:
-          "bg-sky-400 text-primary-foreground hover:bg-sky-400/90 border-sky-500 border-b-4 active:border-b-0",
-        primaryOutline: "bg-white text-sky-500 hover:bg-slate-100",
+          "bg-duo-blue text-white hover:bg-duo-blue/90 border-duo-blue/80 border-b-4 active:border-b-0",
+        primaryOutline:
+          "bg-background text-duo-blue hover:bg-foreground/5",
 
         secondary:
-          "bg-green-500 text-primary-foreground hover:bg-green-500/90 border-green-600 border-b-4 active:border-b-0",
-        secondaryOutline: "bg-white text-green-500 hover:bg-slate-100",
+          "bg-duo-green text-white hover:bg-duo-green/90 border-duo-green-dark border-b-4 active:border-b-0",
+        secondaryOutline:
+          "bg-background text-duo-green hover:bg-foreground/5",
+
+        tertiary:
+          "bg-duo-red text-white hover:bg-duo-red/90 border-duo-red/80 border-b-4 active:border-b-0",
 
         danger:
-          "bg-rose-500 text-primary-foreground hover:bg-rose-500/90 border-rose-600 border-b-4 active:border-b-0",
-        dangerOutline: "bg-white text-rose-500 hover:bg-slate-100",
+          "bg-duo-red text-white hover:bg-duo-red/90 border-duo-red/80 border-b-4 active:border-b-0",
+        dangerOutline:
+          "bg-background text-duo-red hover:bg-foreground/5",
 
         super:
-          "bg-indigo-500 text-primary-foreground hover:bg-indigo-500/90 border-indigo-600 border-b-4 active:border-b-0",
-        superOutline: "bg-white text-indigo-500 hover:bg-slate-100",
+          "bg-duo-purple text-white hover:bg-duo-purple/90 border-duo-purple/80 border-b-4 active:border-b-0",
+        superOutline:
+          "bg-background text-duo-purple hover:bg-foreground/5",
 
         ghost:
-          "bg-transparent text-slate-500 border-transparent border-0 hover:bg-slate-100",
+          "bg-transparent text-foreground/50 border-transparent border-0 hover:bg-foreground/5",
 
         sidebar:
-          "bg-transparent text-slate-500 border-2 border-transparent hover:bg-slate-100 transition-none",
+          "bg-transparent text-foreground/50 border-2 border-transparent hover:bg-foreground/5 transition-none",
         sidebarOutline:
-          "bg-sky-500/15 text-sky-500 border-sky-300 border-2 hover:bg-sky-500/20 transition-none",
+          "bg-duo-blue/15 text-duo-blue border-duo-blue/40 border-2 hover:bg-duo-blue/20 transition-none",
       },
       size: {
         default: "h-11 px-4 py-2",
@@ -59,8 +66,7 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
   VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }

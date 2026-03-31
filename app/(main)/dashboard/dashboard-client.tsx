@@ -7,6 +7,7 @@ import { LessonButton } from "@/components/lesson-button";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useClerk } from "@clerk/nextjs";
+import LessonPreviewDialog from "@/components/lesson-preview-dialog";
 
 type DashboardClientProps = {
   lessons: DashboardLessonItem[];
@@ -26,6 +27,8 @@ export default function DashboardClient({
   const velocityRef = useRef(0);
   const rafRef = useRef<number | null>(null);
   const { signOut } = useClerk();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedLessonId, setSelectedLessonId] = useState<number | null>(null);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -77,7 +80,7 @@ export default function DashboardClient({
 
       <nav className="fixed top-0 left-0 w-full h-16 bg-black text-white flex items-center px-6 z-40">
         <div className="flex items-center min-w-0">
-          <h1 className="text-lg font-bold">{activeCourseTitle}</h1>
+          <h1 className="text-lg text-duo-green-dark font-bold">{activeCourseTitle}</h1>
           <span className="mx-2 text-neutral-400">/</span>
           <p className="text-sm text-neutral-300">{activeUnitTitle}</p>
           <span className="mx-2 text-neutral-500">/</span>
@@ -91,10 +94,10 @@ export default function DashboardClient({
           </Link>
           <Button
             size="sm"
-            variant="ghost"
+            variant="tertiary"
             onClick={() => {
               // Use Clerk signOut then navigate back to home
-              void signOut({ redirectUrl: "/" });
+              void signOut({ redirectUrl: "/sign-in" });
             }}
           >
             Log out
@@ -120,10 +123,23 @@ export default function DashboardClient({
               percentage={lesson.percentage}
               current={lesson.current}
               locked={lesson.locked}
+              onOpen={(id) => {
+                setSelectedLessonId(id);
+                setIsDialogOpen(true);
+              }}
             />
           ))
         )}
       </div>
+      <LessonPreviewDialog
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        lesson={
+          selectedLessonId != null
+            ? lessons.find((l) => l.id === selectedLessonId) ?? null
+            : null
+        }
+      />
     </div>
   );
 }

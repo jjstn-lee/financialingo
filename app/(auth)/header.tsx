@@ -35,13 +35,13 @@ export const Header = () => {
               <Loader className="h-5 w-5 animate-spin text-muted-foreground" />
             </ClerkLoading>
             <ClerkLoaded>
-              {!isSignedIn && (
+              {/* {!isSignedIn && (
                 <SignInButton>
                   <Button size="lg" variant="ghost">
                     Login
                   </Button>
                 </SignInButton>
-              )}
+              )} */}
             </ClerkLoaded>
           </div>
         </div>

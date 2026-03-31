@@ -10,6 +10,8 @@ export type DashboardLessonItem = {
   percentage: number;
   locked: boolean;
   current: boolean;
+  questionCount: number;
+  description?: string;
 };
 
 export type DashboardActiveCourse = {
@@ -62,6 +64,8 @@ export const getDashboardLessons = async (): Promise<DashboardLessonItem[]> => {
       id: lesson.id,
       title: lesson.title,
       percentage,
+      questionCount,
+      // No lesson description in schema; preserve optional for future
     };
   });
 
